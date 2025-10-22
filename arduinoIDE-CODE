@@ -1,0 +1,109 @@
+int led1 = 3;
+int led2 = 4;
+int led3 = 5;
+int led4 = 6;
+int led5 = 7;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  pinMode(led5, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String receivedData = Serial.readStringUntil('\n');
+
+    if (receivedData == "LIGHTSON") {
+      digitalWrite(LED_BUILTIN, HIGH);
+    }
+    else if (receivedData == "LIGHTSOFF") {
+      digitalWrite(LED_BUILTIN, LOW);
+    }
+
+    
+    else if (receivedData == "pattern1") {
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, HIGH);
+      digitalWrite(led4, HIGH);
+      digitalWrite(led5, HIGH);
+    }
+
+    
+    else if (receivedData == "OFF") {
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+    }
+
+    
+    else if (receivedData == "pattern2") {
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, HIGH);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, HIGH);
+    }
+
+    
+    else if (receivedData == "pattern3") {
+      digitalWrite(led1, HIGH);
+      delay(200);
+      digitalWrite(led2, HIGH);
+      delay(200);
+      digitalWrite(led3, HIGH);
+      delay(200);
+      digitalWrite(led4, HIGH);
+      delay(200);
+      digitalWrite(led5, HIGH);
+      delay(200);
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+    }
+
+    
+    else if (receivedData == "pattern4") {
+      digitalWrite(led3, HIGH);
+      delay(200);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led4, HIGH);
+      delay(200);
+      digitalWrite(led1, HIGH);
+      digitalWrite(led5, HIGH);
+      delay(200);
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+    }
+
+    
+    else if (receivedData == "pattern5") {
+      digitalWrite(led5, HIGH);
+      delay(200);
+      digitalWrite(led4, HIGH);
+      delay(200);
+      digitalWrite(led3, HIGH);
+      delay(200);
+      digitalWrite(led2, HIGH);
+      delay(200);
+      digitalWrite(led1, HIGH);
+      delay(200);
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+    }
+  }
+}
